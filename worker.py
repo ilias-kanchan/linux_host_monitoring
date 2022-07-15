@@ -28,8 +28,6 @@ class Worker:
                 print("Wrong username and password")
                 pass
             else:
-
-                # print(stdout.read().decode())
                 hostname = stdout.read().decode().strip('\n')
                 hostname_date = hostname + "_" + today_date
                 # print(hostname_date.strip('\n'))
