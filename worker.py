@@ -25,9 +25,10 @@ class Worker:
                 client.connect(server_ip, username=username, password=password)
                 stdin, stdout, stderr = client.exec_command("hostname")
             except:
-                print("Wrong username and password")
+                print(f"Wrong username and password for host {server_ip}")
                 pass
             else:
+                # print(stdout.read().decode())
                 hostname = stdout.read().decode().strip('\n')
                 hostname_date = hostname + "_" + today_date
                 # print(hostname_date.strip('\n'))
