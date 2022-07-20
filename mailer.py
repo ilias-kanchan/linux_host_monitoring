@@ -1,14 +1,14 @@
 import paramiko
 import smtplib, ssl
 import datetime
-import os
 import csv
+import os
 
 port = 465  # For SSL
 smtp_server = "smtp.gmail.com"
-sender_email = "sender@gmail.com"  # Enter your address
-receiver_email = "receiver@gmail.com"  # Enter receiver address
-mail_password = "pass123"
+sender_email = "bjit.doc@gmail.com"  # Enter your address
+receiver_email = "iliaskanchan88@gmail.com"  # Enter receiver address
+mail_password = "hobataesrigkogir"
 
 
 class Mailer:
@@ -107,12 +107,17 @@ class Mailer:
 
     def high_disk_mailer(self):
 
-        with open("high_disk_utilization.txt") as f:
-            content = f.read()
+        try:
+            with open("high_disk_utilization.txt") as f:
+                content = f.read()
+        except FileNotFoundError:
+            print("file not exist")
+        else:
+            message = f"Subject: Disk utilization is high\n\nDisk utilization is\n\n {content}"
+            context = ssl.create_default_context()
+            with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
+                server.login(sender_email, mail_password)
+                server.sendmail(sender_email, receiver_email, message)
 
-        message = f"Subject: Disk utilization is high\n\nDisk utilization is\n\n {content}"
-        context = ssl.create_default_context()
-        with smtplib.SMTP_SSL(smtp_server, port, context=context) as server:
-            server.login(sender_email, mail_password)
-            server.sendmail(sender_email, receiver_email, message)
+        os.remove("high_disk_utilization.txt")
 
