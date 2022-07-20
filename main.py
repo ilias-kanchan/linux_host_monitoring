@@ -59,6 +59,3 @@ else:
         x = datetime.datetime.now()
         today_date = x.strftime("%Y%m%d")
         f.write(today_date)
-
-    with open("high_disk_utilization.txt", "w") as f:
-        f.write("")
