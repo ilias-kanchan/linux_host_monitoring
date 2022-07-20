@@ -44,21 +44,21 @@ with open(filename, 'r') as csvfile:
                 disk_utilization = Mailer("df -h | awk '{print $5 $6}' | grep -v 'Use'", server, user, password)
                 disk_utilization.high_disk_utilization()
 
-    with open("today.txt") as f:
-        today = f.read()
+with open("today.txt") as f:
+    today = f.read()
 
-    x = datetime.datetime.now()
-    today_date = x.strftime("%Y%m%d")
+x = datetime.datetime.now()
+today_date = x.strftime("%Y%m%d")
 
-    if today_date == today:
-        print("date matched")
-    else:
-        disk_utilization_mailer = Mailer("df -h | awk '{print $5 $6}' | grep -v 'Use'", server, user, password)
-        disk_utilization_mailer.high_disk_mailer()
-        with open("today.txt", "w") as f:
-            x = datetime.datetime.now()
-            today_date = x.strftime("%Y%m%d")
-            f.write(today_date)
+if today_date == today:
+    print("date matched")
+else:
+    disk_utilization_mailer = Mailer("df -h | awk '{print $5 $6}' | grep -v 'Use'", server, user, password)
+    disk_utilization_mailer.high_disk_mailer()
+    with open("today.txt", "w") as f:
+        x = datetime.datetime.now()
+        today_date = x.strftime("%Y%m%d")
+        f.write(today_date)
 
-        with open("high_disk_utilization.txt", "w") as f:
-            f.write("")
+    with open("high_disk_utilization.txt", "w") as f:
+        f.write("")
