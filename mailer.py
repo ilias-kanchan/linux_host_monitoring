@@ -6,9 +6,9 @@ import os
 
 port = 465  # For SSL
 smtp_server = "smtp.gmail.com"
-sender_email = "bjit.doc@gmail.com"  # Enter your address
-receiver_email = "iliaskanchan88@gmail.com"  # Enter receiver address
-mail_password = "hobataesrigkogir"
+sender_email = "sender@gmail.com"  # Enter your address
+receiver_email = "receiver@gmail.com"  # Enter receiver address
+mail_password = "pass123"
 
 
 class Mailer:
