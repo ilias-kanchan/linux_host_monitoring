@@ -101,7 +101,7 @@ class Mailer:
                         with open("high_disk_utilization.txt", "a+") as f:
                             x = datetime.datetime.now()
                             today_date_time = x.strftime("%Y_%m_%d_%H_%M_%S_yyyy_mm_dd_hr_min_sec")
-                            f.write(f"Date time: {today_date_time} Host: {server_ip} Mountpoint {mountpoint} Utilization {utilization}\n")
+                            f.write(f"Date time: {today_date_time} Host: {server_ip} Mountpoint {mountpoint} Utilization {utilization}%\n")
 
             stdin.close()
             client.close()
