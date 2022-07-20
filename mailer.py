@@ -2,7 +2,6 @@ import paramiko
 import smtplib, ssl
 import datetime
 import os
-import pandas as pd
 import csv
 
 port = 465  # For SSL
